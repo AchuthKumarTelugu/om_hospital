@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sdwot>
+    <template id="report_student_id_card">
+        <!-- Using the correct layout call for report -->
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o"> 
+                <t t-call="web.external_layout">
+                    <div class="header">
+                        <!-- Optional header content -->
+                    </div>
+                    <div class="page">
+                        <div class="oe_structure">
+                            <!-- Optional structure content -->
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <table class="table table-condensed" style="width:243pt; height:153pt; border: 1pt solid black; border-collapse:separate; border-radius:8pt; margin:5pt">
+                                    <tr>
+                                        <td width="100%" valign="center" >
+                                            <table style="width:155pt; height:85pt" class="table-borderless">
+                                                <tr>
+                                                   <div class="" style="font-size:15pt; margin-bottom:0pt;margin-top:0pt;" align="center">
+                                                       <td>
+                                                            <span>
+                                                                <strong>Name:</strong>
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            <span>:</span>
+                                                        </td>
+                                                        <td>
+                                                            <span t-field="o.name"/>
+                                                        </td>
+                                                   </div>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span>
+                                                            <strong>Age:</strong>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span>:</span>
+                                                    </td>
+                                                    <td>
+                                                        <!-- Displaying age of student -->
+                                                        <span t-field="o.age"/>
+                                                    </td>
+                                                </tr><tr>
+                                                    <td>
+                                                        <span>
+                                                            <strong>reference:</strong>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span>:</span>
+                                                    </td>
+                                                    <td>
+                                                        <!-- Displaying age of student -->
+                                                        <span t-field="o.student_reference"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div> <!-- Closed .row -->
+                    </div> <!-- Closed .page -->
+                    <div class="footer">
+                        <!-- Optional footer content -->
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>  
+ 
+     <template id="report_school_student_id_card">
+        <!-- Using the correct layout call for report -->
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-foreach="docs" t-as="o"> 
+                    <div class="header">
+                        <!-- Optional header content -->
+                    </div>
+                    <div class="page">
+                        <div class="oe_structure">
+                            <!-- Optional structure content -->
+                        </div>
+                        <div class="row" style="">
+                            <div class="col-md-6">
+                                <table class="table table-condensed" style="width:243pt; height:153pt; border: 1pt solid black; border-collapse:separate; border-radius:8pt; margin:5pt auto" >
+                                    <tr>
+                                        <td width="100%" valign="center" >
+                                            <table style="width:155pt; height:85pt" class="table-borderless">
+                                                <tr>
+                                                   <div class="" style="font-size:15pt; margin-bottom:0pt;margin-top:0pt;" align="center">
+                                                       <td>
+                                                            <span>
+                                                                <strong>Name:</strong>
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            <span>:</span>
+                                                        </td>
+                                                        <td>
+                                                            <span t-field="o.name"/>
+                                                        </td>
+                                                   </div>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span>
+                                                            <strong>Age:</strong>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span>:</span>
+                                                    </td>
+                                                    <td>
+                                                        <!-- Displaying age of student -->
+                                                        <span t-field="o.age"/>
+                                                    </td>
+                                                </tr><tr>
+                                                    <td>
+                                                        <span>
+                                                            <strong>reference:</strong>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span>:</span>
+                                                    </td>
+                                                    <td>
+                                                        <!-- Displaying age of student -->
+                                                        <span t-field="o.student_reference"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div> <!-- Closed .row -->
+                    </div> <!-- Closed .page -->
+                    <div class="footer">
+                        <!-- Optional footer content -->
+                    </div>
+            </t>
+                </t>
+        </t>
+    </template> 
+
+</sdwot>

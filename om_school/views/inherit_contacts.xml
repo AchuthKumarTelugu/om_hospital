@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sdwot>
+    <!-- to inherit the form view we need external id-->
+   
+     <record id="view_order_tree_inherit" model="ir.ui.view">
+            <field name="name">res.partner.inherited</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name='arch' type='xml'>
+                <field name='phone' position='before'>
+                    <field name='email' position="move"/>
+                </field>
+            </field>
+    </record>
+
+</sdwot>

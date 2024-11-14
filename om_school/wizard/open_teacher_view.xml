@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sdwot>
+    <data>
+        <record id="open_teacher_view" model="ir.ui.view">
+            <field name="name">open.teacher.wizard</field>
+            <field name="model">open.teacher.wizard</field>
+            <field name="arch" type="xml">
+                <form string="open teacher records">
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="date_joined"/>
+                            <field name="date_left"/>
+                        </group>
+                    </group>
+                    <footer>
+                    <!-- name in button type object is function in its wizard model -->
+                       
+                        <button string="Cancel" class="btn-secondary" special="cancel" />   
+                        <button string="post" class="btn-primary" type="object" name="open_teachers"/>
+                    </footer>
+                </form>
+            </field>
+            
+        </record>
+    </data>
+    <data >
+        <record id="action_open_teacher" model="ir.actions.act_window">
+            <field name="name">Open teacher</field>
+            <field name="res_model">open.teacher.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="open_teacher_view"/>
+            <field name="target">new</field>
+            
+        </record>
+    </data>
+</sdwot>

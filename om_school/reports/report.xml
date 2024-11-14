@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sdwot>
+       <record id="report_student_details" model="ir.actions.report">
+            <field name="name">Student Details</field>
+            <field name="model">school.student</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">om_school.report_student_id_card</field>
+            <field name="report_file">om_school.report_student_id_card</field>
+            <field name="binding_model_id" ref="model_school_student"/>
+            <field name="binding_type">report</field>
+        </record>
+        <record id="report_school_student_details" model="ir.actions.report">
+            <field name="name">Student student Details</field>
+            <field name="model">school.student</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">om_school.report_school_student_id_card</field>
+            <field name="report_file">om_school.report_school_student_id_card</field>
+            <field name="binding_model_id" ref="model_school_student"/>
+            <field name="binding_type">report</field>
+        </record>
+        
+        <record id="report_open_teacher_details" model="ir.actions.report">
+            <field name="name">teacher Details</field>
+            <field name="model">open.teacher.wizard</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">om_school.report_teacher_details</field>
+            <field name="report_file">om_school.report_teacher_details</field>
+            <field name="binding_model_id" ref="model_open_teacher_wizard"/>
+            <field name="binding_type">report</field>
+        </record>
+</sdwot>

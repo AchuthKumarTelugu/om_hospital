@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sdwot>
+    <data noupdate="1">
+        <!-- sequence for school student -->
+        <record id="seq_school_student" model="ir.sequence">
+            <field name="name">Student Roll number</field>
+            <field name="code">school.student</field>
+            <field name="prefix">Roll</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+            
+        </record> <record id="seq_school_teacher" model="ir.sequence">
+            <field name="name">teacher id number</field>
+            <field name="code">school.teacher</field>
+            <field name="prefix">Id</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        
+         <record id="seq_sports_student" model="ir.sequence">
+            <field name="name">sport id number</field>
+            <field name="code">school.sports_student</field>
+            <field name="prefix">sp</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+
+</sdwot>

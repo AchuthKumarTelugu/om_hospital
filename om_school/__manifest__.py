@@ -1,0 +1,32 @@
+
+{
+    'name': 'School management',
+    # 'version': '',
+    'category': 'Accounting/Accounting',
+    'summary': 'school management software',
+    'description': """ school management software""",
+    'website':"www.sdwot.ai",
+    'depends': ['sale_management','mail'],
+    'sequence':-100,
+    'data': [
+        'security/ir.model.access.csv',
+        'data/data.xml',
+        'wizard/create_teacher_view.xml',
+        'wizard/open_teacher_view.xml',
+        'views/student_view.xml',
+        'views/teacher_view.xml',
+        'views/sport_students_view.xml',
+        'views/sale.xml',
+        'views/inherit_contacts.xml',
+        'views/older_students.xml',
+        'views/female_students.xml',
+        'views/male_students.xml',
+        'reports/student_card.xml',
+        'reports/teacher_card.xml',
+        'reports/report.xml',
+    ],
+    'installable': True,
+    'application':True,
+    'auto_install':False,
+    
+}

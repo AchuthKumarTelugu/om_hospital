@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sdwot>
+   
+   <template id="report_teacher_details">
+       <t t-call="web.html_container">
+           <t t-call="web.external_layout">
+               <div class="header">s</div>
+               <div class="page">
+               <div class="oe_structure"></div>
+               <div class="text-center">
+                   <h2>teacher details </h2>
+               </div>
+               <table class="table table-condensed" style="width:243pt; height:153pt; border: 1pt solid black; border-collapse:separate; border-radius:8pt; margin:5pt auto">
+                   <tr class="" width="100%" valign="center">
+                       <div class="" style="font-size:15pt; margin-bottom:0pt;margin-top:0pt;" align="center">
+                            <td>Teacher</td>
+                            <td style="margin-left:5pt;margin-right:5pt;">:</td>
+                            <td>
+                                <t t-if="form_data['name']">
+                                    <t t-esc="form_data['name']"/>
+                                </t>
+                            </td>
+                        </div>   
+                   </tr>
+                   <tr class="">
+                       <td>Joined from </td>
+                       <td style="margin-left:5pt;margin-right:5pt;">:</td>
+                       <td>
+                           <t t-if="form_data['date_joined']">
+                               <t t-esc="form_data['date_joined']"/>
+                           </t>
+                       </td>
+                   </tr>
+                   <tr class="">
+                       <td>left at</td>
+                       <td style="margin-left:5pt;margin-right:5pt;">:</td>
+                       <td>
+                           <t t-if="form_data['date_left']">
+                               <t t-esc="form_data['date_left']"/>
+                           </t>
+                       </td>
+                   </tr>
+               </table>
+               <br/>
+               
+               <table class="table table-condensed" style="width:243pt; height:153pt; border: 1pt solid black; border-collapse:separate; border-radius:8pt; margin:5pt auto">
+                  <thead>
+                      <th name="th_reference" class="text-left">
+                          <span>Reference</span>
+                      </th> 
+                      <th name="th_age" class="text-left">
+                          <span>Age</span>
+                      </th>
+                  </thead>
+                  <t t-foreach="teachers" t-as="line">
+                      <tr>
+                          <td>
+                            <span t-esc="line['name']"/>
+                          </td>
+                          <td>
+                            <span t-esc="line['age']"/>
+                          </td>
+                      </tr>
+                     
+                  </t>
+               </table>
+
+                <br/>
+               
+               <table class="table table-condensed" style="width:243pt; height:153pt; border: 1pt solid black; border-collapse:separate; border-radius:8pt; margin:5pt auto">
+                  <thead>
+                      <th name="th_teacher_name" class="text-left">
+                          <span>Teacher</span>
+                      </th> 
+                      <th name="th_age" class="text-left">
+                          <span>Age</span>
+                      </th>
+                  </thead>
+                  <t t-foreach="docs" t-as="o">
+                      <tr>
+                          <td>
+                            <span t-field="o.name"/>
+                          </td>
+                          <td>
+                            <span t-field="o.age"/>
+                          </td>
+                      </tr>
+                     
+                  </t>
+               </table>
+
+               </div>
+               <div class="footer"></div>
+           </t>
+       </t>
+   </template>
+
+</sdwot>

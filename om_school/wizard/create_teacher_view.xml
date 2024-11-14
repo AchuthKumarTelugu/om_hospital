@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sdwot>
+    <data>
+        <record id="create_teacher_view" model="ir.ui.view">
+            <field name="name">create.teacher.wizard</field>
+            <field name="model">create.teacher.wizard</field>
+            <field name="arch" type="xml">
+                <form string="create New teacher">
+                    <group>
+                        <field name="name"/>
+                        <field name="date_joined"/>
+                    </group>
+                    <footer>
+                    <!-- name in button type object is function in its wizard model -->
+                        <button string="Create" class="btn-primary" type='object' name='action_create_teacher'/>   
+                        <button string="view related records" class="btn-primary" type='object' name='action_view_teacher'/>   
+                        <button string="Cancel" class="btn-secondary" special="cancel" />   
+                    </footer>
+                </form>
+            </field>
+            
+        </record>
+    </data>
+    <data >
+        <record id="action_create_teacher" model="ir.actions.act_window">
+            <field name="name">Create teacher</field>
+            <field name="res_model">create.teacher.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="create_teacher_view"/>
+            <field name="context">{'default_name':active_id}</field>
+            <field name="target">new</field>
+            
+        </record>
+    </data>
+</sdwot>

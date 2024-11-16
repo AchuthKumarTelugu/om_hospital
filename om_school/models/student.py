@@ -31,6 +31,7 @@ class SchoolStudent(models.Model) :
     image=fields.Binary(string="student image")
     related_teacher_ids=fields.One2many('school.teacher','name',string='Related teachers')
     active=fields.Boolean(string="Active",default=True)
+    is_archived=fields.Boolean(string="is archived",default=False)
 
     @api.model
     def open_create_teacher(self):
@@ -43,6 +44,24 @@ class SchoolStudent(models.Model) :
       #to avoid singleton error
       for rec in self:
         rec.teacher_count=self.env['school.teacher'].search_count([('name','=',rec.name)])
+    
+    def hide_students(self):
+      print(self.read()[0].get('domain')) 
+
+      for rec in self:
+        rec.is_archived=True
+      action=self.env.ref('om_school.student_action').read()[0]
+      action['domain']=[('is_archived','=',False)]
+      return action   
+  
+
+    def unarchive_hidden_students(self):
+      print(self.read()[0].get('domain')) 
+      for rec in self:
+          rec.is_archived=False
+      action=self.env.ref('om_school.student_action').read()[0]
+      action['domain']=[('is_archived','=',True)]  
+      return action 
 
     def action_confirm(self):
       for rec in self:
@@ -68,7 +87,8 @@ class SchoolStudent(models.Model) :
           rec.display_name=f"{rec.name}"
         else:
           rec.display_name=f"[{rec.student_reference}] {rec.name}"
-      print(rec.display_name)    
+      print(rec.display_name)  
+
     def open_teachers(self):
       action=self.env.ref('om_school.teacher_action').read()[0]
       action['domain']=[('name','=',self.name)] 
@@ -122,7 +142,7 @@ class SchoolStudent(models.Model) :
       #to avoid singleton
       for rec in self:
         #avoiding duplicate name
-          searchRes=self.env['school.student'].search([('name','=',rec.name),('id','=',rec.id)])
+          searchRes=self.env['school.student'].search([('name','=',rec.name),('id','!=',rec.id)])
           if searchRes:
             raise ValidationError("no duplication constrain:name %s is already present"%rec.name)   
 

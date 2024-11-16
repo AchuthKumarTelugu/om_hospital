@@ -13,6 +13,10 @@
                     <filter  string="Female" name="gender" domain="[('gender','=','female')]" />
                     <filter  string="Other" name="gender" domain="[('gender','=','other')]" />
                     <filter string="Archived" name="inactive" domain="[('active','=',False)]" />
+                    <filter string="show archived" name="archived" domain="[('is_archived','=',True)]" />
+                    <!-- <filter string="show unarchived" name="unarchived" domain="[('is_archived','=',False)]" default="1" /> -->
+                    <filter string="show unarchived" name="unarchived" domain="[('is_archived','=',False)]"  />
+                    
                     <group expand="1" string="Group By">
                         <filter string="Gender" name="gender" context="{'group_by': 'gender'}"/>
                         <filter string="Student name" name="student_name" context="{'group_by': 'name'}"/>
@@ -67,6 +71,7 @@
                     <field name='state'/>
                     <field name='teacher_count' optional="hide"/>
                     <field name='date_joined' optional='hide'/>
+                    <field name="is_archived" />
                 </tree>
             </field>
     </record>
@@ -79,13 +84,18 @@
                     <!-- we have to define action_confirm function which will be triggered when we click below button -->
                       <button id='button_confirm' name="action_confirm" string="Confirm" type="object" class='btn-primary'
                       invisible="state !='draft' " confirm='Are your sure to confirm?'/>
+                      
                       <button id='button_draft' name="action_draft" string="Set to Draft" type="object" class='btn-primary'
                       invisible="state !='cancel' "/>
+
                       <button id='button_done' name="action_done" string="Mark as done" type="object" class='btn-primary'
                      invisible="state !='confirm' "/>
+
                       <button id='button_cancel' name="action_cancel" string="Cancel" type="object" 
                       invisible="state == 'cancel' " confirm="Are you sure to cancel?"/>
+
                       <button id='action_create_teacher' name="%(om_school.action_create_teacher)d" string="Create Teacher" type="action" class='btn-primary'/>
+
                       <button name="action_url" string="open url" type="object" class="btn-primary"/>
 
                         <field name='state' widget='statusbar' 
@@ -98,7 +108,7 @@
                         <button name="open_teachers" type="object" class="oe_stat_button" icon="fa-plus" >
                         <div class="oe_stat_info">
                             <field name="teacher_count" class="oe_stat_value"/>
-                            <div class="oe_stat_text">Teachers</div>
+                            <div class="oe_stat_text">Teachers</div> 
                         </div>
                         </button>
                      </div>
@@ -163,9 +173,10 @@
                         </notebook>
                     </sheet>
                      <div class="oe_chatter">
-                        <field name='message_follower_ids' />
+                        <!-- <field name='message_follower_ids'/> -->
                         <field name='activity_ids'/>
                         <field name='message_ids'/>
+                        <field name='message_follower_ids' />
                     </div>
                 </form>
             </field>
@@ -177,7 +188,8 @@
              <field name="view_mode">tree,form,kanban</field>
              <!-- #setting default group and filter for menu -->
              <!-- <field name='context'> {'search_default_gender':1,'search_default_name':1} </field> -->
-             <field name='context'> {'search_default_gender':1}</field>
+             <field name='context'> {'search_default_unarchived':1}</field>
+             <field name="domain">[]</field>
              <field name="help" type="html">
                  <p class='o_view_nocontent_smiling_face'>
                      Create your first student!
@@ -195,6 +207,31 @@
         records.action_confirm()
     </field> 
 </record>
+
+<record model="ir.actions.server" id="action_hide_students">
+    <field name="name">hide students</field>
+    <field name="type">ir.actions.server</field>
+    <field name="model_id" ref="model_school_student"/>
+   <field name="binding_model_id" ref="model_school_student" />
+   <field name="binding_view_types">form,tree</field>
+    <field name="state">code</field>
+    <field name="code">
+        records.hide_students()
+    </field> 
+</record>
+
+<record model="ir.actions.server" id="action_unarchive_hide_students">
+    <field name="name">unarchive hide students</field>
+    <field name="type">ir.actions.server</field>
+    <field name="model_id" ref="model_school_student"/>
+   <field name="binding_model_id" ref="model_school_student" />
+   <field name="binding_view_types">form,tree</field>
+    <field name="state">code</field>
+    <field name="code">
+        records.unarchive_hidden_students()
+    </field> 
+</record>
+
 <record model="ir.actions.server" id="action_confirm_school_students">
     <field name="name">create teacher</field>
     <field name="type">ir.actions.server</field>
